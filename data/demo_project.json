@@ -1,0 +1,46 @@
+{
+  "_DEMO_DATA_NOTICE": "This is DEMO DATA created for sales presentation purposes only. Replace this file with a real client's project details before any live client deployment.",
+  "project_name": "Nexus Heights",
+  "location": "Golf Course Road, Gurgaon",
+  "property_types": ["2 BHK", "3 BHK", "4 BHK"],
+  "price_range": {
+    "min": 14500000,
+    "max": 45000000,
+    "display": "₹1.45 Cr – ₹4.50 Cr"
+  },
+  "possession": "2029",
+  "rera_number": "DEMO-RERA-GGM-2026-00123",
+  "amenities": [
+    "Clubhouse",
+    "Infinity Swimming Pool",
+    "Fully Equipped Gym",
+    "Kids Play Area",
+    "Sports Facilities (Tennis & Badminton Courts)",
+    "24x7 Security & CCTV Surveillance",
+    "3-tier Landscaped Gardens",
+    "EV Charging Stations"
+  ],
+  "inventory": [
+    {"config": "2 BHK", "size_sqft": 1250, "price": 14500000, "units_available": 12},
+    {"config": "3 BHK", "size_sqft": 1850, "price": 24500000, "units_available": 8},
+    {"config": "4 BHK", "size_sqft": 2650, "price": 45000000, "units_available": 4}
+  ],
+  "faqs": [
+    {
+      "question": "What is the possession date for Nexus Heights?",
+      "answer": "Possession is expected in 2029."
+    },
+    {
+      "question": "Is Nexus Heights RERA registered?",
+      "answer": "Yes, the RERA registration number is DEMO-RERA-GGM-2026-00123 (demo value)."
+    },
+    {
+      "question": "What configurations are available?",
+      "answer": "2 BHK, 3 BHK, and 4 BHK apartments are available, ranging from ₹1.45 Cr to ₹4.50 Cr."
+    },
+    {
+      "question": "What amenities does the project offer?",
+      "answer": "Clubhouse, infinity pool, gym, kids play area, sports courts, 24x7 security, landscaped gardens, and EV charging stations."
+    }
+  ]
+}
