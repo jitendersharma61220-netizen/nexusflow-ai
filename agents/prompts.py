@@ -28,9 +28,17 @@ STRICT RULES:
 - When the buyer shows strong interest (specific budget + configuration, or asks about
   price/inventory/site visit), proactively offer a site visit.
 - If the buyer wants a site visit, collect their preferred date, time, and phone number.
+- If the buyer's budget or requirement clearly does NOT fit {project_name} (e.g. their
+  budget is far below the price range), do not just refuse — check OTHER PROJECTS IN OUR
+  PORTFOLIO below and proactively suggest one that fits, using only the data given there.
+  Only offer to connect with the sales team if nothing in the portfolio fits either.
 
 PROJECT KNOWLEDGE:
 {project_context}
+
+OTHER PROJECTS IN OUR PORTFOLIO (only mention these if {project_name} doesn't fit the
+buyer's budget or requirement — never invent details beyond what's listed here):
+{portfolio_context}
 
 KNOWN LEAD INFO SO FAR (do not re-ask for these):
 {known_lead_info}
@@ -63,6 +71,20 @@ def build_system_prompt(project: dict, known_lead_info: dict | None = None) -> s
 
     project_context = "\n".join(context_lines)
 
+    alternatives = project.get("portfolio_alternatives", [])
+    if alternatives:
+        alt_lines = []
+        for alt in alternatives:
+            alt_lines.append(
+                f"  - {alt.get('project_name')} ({alt.get('location')}): "
+                f"{', '.join(alt.get('property_types', []))}, "
+                f"{alt.get('price_range', {}).get('display')}, "
+                f"possession {alt.get('possession')}"
+            )
+        portfolio_context = "\n".join(alt_lines)
+    else:
+        portfolio_context = "(no other projects in the portfolio)"
+
     known = known_lead_info or {}
     known_filtered = {k: v for k, v in known.items() if v not in (None, "", 0, False)}
     known_lead_info_str = json.dumps(known_filtered, ensure_ascii=False) if known_filtered else "(none yet)"
@@ -70,6 +92,7 @@ def build_system_prompt(project: dict, known_lead_info: dict | None = None) -> s
     return SYSTEM_PROMPT_TEMPLATE.format(
         project_name=project.get("project_name", "the project"),
         project_context=project_context,
+        portfolio_context=portfolio_context,
         known_lead_info=known_lead_info_str,
     )
 
@@ -120,7 +143,9 @@ OBJECTION_PLAYBOOK = {
         "The buyer feels the price is too high. Respond empathetically. Try to understand "
         "whether their budget is fixed, whether a smaller configuration would suit them "
         "better, whether another location/tower fits their budget, or whether a payment "
-        "plan would help. Do not just repeat the price."
+        "plan would help. If nothing in this project fits, check OTHER PROJECTS IN OUR "
+        "PORTFOLIO and suggest one that matches their budget instead of just refusing. "
+        "Do not just repeat the price."
     ),
     "will_decide_later": (
         "The buyer wants to decide later. Do not push aggressively. Ask about their "

@@ -27,6 +27,13 @@ def load_demo_project_as_documents(project: dict) -> list[str]:
         )
     for faq in project.get("faqs", []):
         docs.append(f"Q: {faq.get('question')} A: {faq.get('answer')}")
+    for alt in project.get("portfolio_alternatives", []):
+        docs.append(
+            f"{alt.get('project_name')} is another project in our portfolio, located at "
+            f"{alt.get('location')}. Configurations: {', '.join(alt.get('property_types', []))}. "
+            f"Price range: {alt.get('price_range', {}).get('display')}. "
+            f"Possession: {alt.get('possession')}."
+        )
     return docs
 
 

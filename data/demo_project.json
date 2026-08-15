@@ -42,5 +42,23 @@
       "question": "What amenities does the project offer?",
       "answer": "Clubhouse, infinity pool, gym, kids play area, sports courts, 24x7 security, landscaped gardens, and EV charging stations."
     }
+  ],
+  "portfolio_alternatives": [
+    {
+      "project_name": "Nexus Meadows",
+      "location": "Sohna Road, Gurgaon",
+      "property_types": ["1 BHK", "2 BHK"],
+      "price_range": {"min": 5500000, "max": 9500000, "display": "₹55 Lakh – ₹95 Lakh"},
+      "possession": "2028",
+      "note": "A budget-friendly sister project for buyers whose requirement doesn't fit Nexus Heights."
+    },
+    {
+      "project_name": "Nexus Grand",
+      "location": "Dwarka Expressway, Gurgaon",
+      "property_types": ["3 BHK", "4 BHK", "Penthouse"],
+      "price_range": {"min": 55000000, "max": 120000000, "display": "₹5.5 Cr – ₹12 Cr"},
+      "possession": "2030",
+      "note": "A premium sister project for buyers wanting a higher-end option."
+    }
   ]
 }
